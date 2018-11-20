@@ -104,7 +104,13 @@ public class SenseOfRhythm extends JFrame {
 
     public void screenDraw(Graphics g) {
         g.drawImage(introBackground, 0, 0, null);
+<<<<<<< HEAD
         paintComponents(g);
         this.repaint();
+=======
+//        paintComponents(g);
+//        this.revalidate();
+        repaint();
+>>>>>>> dc4ca51dc5377eee735225fe0c725e6da25218c7
     }
 }
