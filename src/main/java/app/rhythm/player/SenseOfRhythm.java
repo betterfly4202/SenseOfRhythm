@@ -40,6 +40,8 @@ public class SenseOfRhythm extends JFrame {
         insertExitButton();
         insertMenuBar();
 
+        // push test - 2018.11.26
+
 //        Music music = new Music("intro_music.mp3", true);
 //        music.start();
     }
