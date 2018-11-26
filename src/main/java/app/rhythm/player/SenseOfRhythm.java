@@ -128,7 +128,7 @@ public class SenseOfRhythm extends JFrame {
                 quitButton.setVisible(false);
                 background = new ImageIcon(this.getClass().getResource("/images/background/game_background.jpg")).getImage();
 
-                // 5강까지 완료
+                // 6강부터
                 // https://www.youtube.com/watch?v=v4MVn4Zb0IY&list=PLRx0vPvlEmdDySO3wDqMYGKMVH4Qa4QhR&index=6
             }
         });
