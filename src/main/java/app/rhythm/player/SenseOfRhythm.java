@@ -15,14 +15,19 @@ public class SenseOfRhythm extends JFrame {
     private Image screenImage;
     private Graphics screenGraphic;
 
-    private Image introBackground = new ImageIcon(this.getClass().getResource("/images/background/intro.jpg")).getImage();
+    private Image background = new ImageIcon(this.getClass().getResource("/images/background/intro.jpg")).getImage();
     private JLabel menuBar = new JLabel(new ImageIcon(this.getClass().getResource("/images/interface/menuBar.png")));
 
     //FIXME : IMAGE화면 자체를 필요로함
     private ImageIcon exitButtonEnteredImage = new ImageIcon(this.getClass().getResource("/images/button/btn_exit_entered.png"));
     private ImageIcon exitButtonBasicImage =new ImageIcon(this.getClass().getResource("/images/button/btn_exit_basic.png"));
 
+    private ImageIcon startButtonImage =new ImageIcon(this.getClass().getResource("/images/button/btn_start.png"));
+    private ImageIcon quitButtonImage =new ImageIcon(this.getClass().getResource("/images/button/btn_quit.png"));
+
     private JButton exitButton = new JButton(exitButtonBasicImage);
+    private JButton startButton = new JButton(startButtonImage);
+    private JButton quitButton = new JButton(quitButtonImage);
 
     private int mouseX,mouseY;
 
@@ -37,16 +42,17 @@ public class SenseOfRhythm extends JFrame {
         setLayout(null); // btn, jlabel 삽입시 위치에 맞도록 설정
         setBackground(new Color(0, 0, 0, 0)); // paintComponents(g) 호출 시 배경을 흰색으로
 
-        insertExitButton();
-        insertMenuBar();
+        addExitButton();
+        addMenuBar();
+        addQuitButton();
+        addStartButton();
 
-        // push test - 2018.11.26
 
 //        Music music = new Music("intro_music.mp3", true);
 //        music.start();
     }
 
-    public void insertMenuBar(){
+    public void addMenuBar(){
         menuBar.setBounds(0, 0, 1280, 30);
 
         menuBar.addMouseListener(new MouseAdapter() {
@@ -70,7 +76,7 @@ public class SenseOfRhythm extends JFrame {
         add(menuBar);
     }
 
-    public void insertExitButton(){
+    public void addExitButton(){
         exitButton.setBounds(1245, 0, 30, 30);
         exitButton.setBorderPainted(false);
         exitButton.setContentAreaFilled(false);
@@ -97,6 +103,66 @@ public class SenseOfRhythm extends JFrame {
         add(exitButton);
     }
 
+    public void addStartButton(){
+        startButton.setBounds(40, 200, 400, 100);
+        startButton.setBorderPainted(false);
+        startButton.setContentAreaFilled(false);
+        startButton.setFocusPainted(false);
+
+        startButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                startButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                startButton.setIcon(startButtonImage);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e){
+                startButton.setIcon(startButtonImage);
+                startButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e){
+                //게임시작 이벤트
+                startButton.setVisible(false);
+                quitButton.setVisible(false);
+                background = new ImageIcon(this.getClass().getResource("/images/background/game_background.jpg")).getImage();
+
+                // 5강까지 완료
+                // https://www.youtube.com/watch?v=v4MVn4Zb0IY&list=PLRx0vPvlEmdDySO3wDqMYGKMVH4Qa4QhR&index=6
+            }
+        });
+
+        add(startButton);
+    }
+
+    public void addQuitButton(){
+        quitButton.setBounds(40, 350, 400, 100);
+        quitButton.setBorderPainted(false);
+        quitButton.setContentAreaFilled(false);
+        quitButton.setFocusPainted(false);
+
+        quitButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                quitButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                quitButton.setIcon(quitButtonImage);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e){
+                quitButton.setIcon(quitButtonImage);
+                quitButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e){
+                System.exit(0);
+            }
+        });
+
+        add(quitButton);
+    }
+
     public void paint(Graphics g){
         screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         screenGraphic = screenImage.getGraphics();
@@ -105,7 +171,7 @@ public class SenseOfRhythm extends JFrame {
     }
 
     public void screenDraw(Graphics g) {
-        g.drawImage(introBackground, 0, 0, null);
+        g.drawImage(background, 0, 0, null);
         paintComponents(g);
         this.repaint();
 //        paintComponents(g);
