@@ -25,9 +25,17 @@ public class SenseOfRhythm extends JFrame {
     private ImageIcon startButtonImage =new ImageIcon(this.getClass().getResource("/images/button/btn_start.png"));
     private ImageIcon quitButtonImage =new ImageIcon(this.getClass().getResource("/images/button/btn_quit.png"));
 
+    private ImageIcon rightButtonEnteredImage = new ImageIcon(this.getClass().getResource("/images/button/btn_right.png"));
+    private ImageIcon rightButtonBasicImage = new ImageIcon(this.getClass().getResource("/images/button/btn_right_active.png"));
+    private ImageIcon leftButtonEnteredImage = new ImageIcon(this.getClass().getResource("/images/button/btn_left.png"));
+    private ImageIcon leftButtonBasicImage = new ImageIcon(this.getClass().getResource("/images/button/btn_left_active.png"));
+
     private JButton exitButton = new JButton(exitButtonBasicImage);
     private JButton startButton = new JButton(startButtonImage);
     private JButton quitButton = new JButton(quitButtonImage);
+
+    private JButton rightButton = new JButton(rightButtonBasicImage);
+    private JButton leftButton = new JButton(leftButtonBasicImage);
 
     private int mouseX,mouseY;
 
@@ -46,7 +54,6 @@ public class SenseOfRhythm extends JFrame {
         addMenuBar();
         addQuitButton();
         addStartButton();
-
 
 //        Music music = new Music("intro_music.mp3", true);
 //        music.start();
@@ -162,6 +169,60 @@ public class SenseOfRhythm extends JFrame {
         add(quitButton);
     }
 
+    public void addLeftButton(){
+        leftButton.setBounds(40, 350, 400, 100);
+        leftButton.setBorderPainted(false);
+        leftButton.setContentAreaFilled(false);
+        leftButton.setFocusPainted(false);
+
+        leftButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                leftButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                leftButton.setIcon(leftButtonEnteredImage);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e){
+                leftButton.setIcon(leftButtonBasicImage);
+                leftButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e){
+                System.exit(0);
+            }
+        });
+
+        add(leftButton);
+    }
+
+    public void addRightButton(){
+        rightButton.setBounds(40, 350, 400, 100);
+        rightButton.setBorderPainted(false);
+        rightButton.setContentAreaFilled(false);
+        rightButton.setFocusPainted(false);
+
+        rightButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                rightButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                rightButton.setIcon(rightButtonEnteredImage);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e){
+                rightButton.setIcon(rightButtonBasicImage);
+                rightButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            }
+            @Override
+            public void mousePressed(MouseEvent e){
+                System.exit(0);
+            }
+        });
+
+        add(rightButton);
+    }
+
     public void paint(Graphics g){
         screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         screenGraphic = screenImage.getGraphics();
@@ -173,8 +234,6 @@ public class SenseOfRhythm extends JFrame {
         g.drawImage(background, 0, 0, null);
         paintComponents(g);
         this.repaint();
-//        paintComponents(g);
-//        this.revalidate();
         repaint();
     }
 }
