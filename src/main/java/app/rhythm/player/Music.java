@@ -15,11 +15,11 @@ import java.io.FileInputStream;
 // 자바에서 음악 재생을 위해 라이브러리 필요
 // http://www.javazoom.net/index.shtml
 /*
-<dependency>
-            <groupId>de.huxhorn.sulky</groupId>
-            <artifactId>de.huxhorn.sulky.3rdparty.jlayer</artifactId>
-            <version>1.0</version>
-        </dependency>
+    <dependency>
+        <groupId>de.huxhorn.sulky</groupId>
+        <artifactId>de.huxhorn.sulky.3rdparty.jlayer</artifactId>
+        <version>1.0</version>
+    </dependency>
  */
 
 public class Music extends Thread{

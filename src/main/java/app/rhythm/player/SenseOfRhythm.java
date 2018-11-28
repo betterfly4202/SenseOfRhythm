@@ -99,7 +99,6 @@ public class SenseOfRhythm extends JFrame {
                 System.exit(0);
             }
         });
-
         add(exitButton);
     }
 
