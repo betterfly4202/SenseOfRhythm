@@ -18,7 +18,7 @@ public class SenseOfRhythm extends JFrame {
     private Image background = new ImageIcon(this.getClass().getResource("/images/background/intro.jpg")).getImage();
     private JLabel menuBar = new JLabel(new ImageIcon(this.getClass().getResource("/images/interface/menuBar.png")));
 
-    //FIXME : IMAGE화면 자체를 필요로함
+    //FIXME : IMAGE 화면 자체를 필요로함
     private ImageIcon exitButtonEnteredImage = new ImageIcon(this.getClass().getResource("/images/button/btn_exit_entered.png"));
     private ImageIcon exitButtonBasicImage =new ImageIcon(this.getClass().getResource("/images/button/btn_exit_basic.png"));
 
@@ -54,6 +54,8 @@ public class SenseOfRhythm extends JFrame {
         addMenuBar();
         addQuitButton();
         addStartButton();
+        addLeftButton();
+        addRightButton();
 
 //        Music music = new Music("intro_music.mp3", true);
 //        music.start();
@@ -170,7 +172,7 @@ public class SenseOfRhythm extends JFrame {
     }
 
     public void addLeftButton(){
-        leftButton.setBounds(40, 350, 400, 100);
+        leftButton.setBounds(140, 310, 60, 60);
         leftButton.setBorderPainted(false);
         leftButton.setContentAreaFilled(false);
         leftButton.setFocusPainted(false);
@@ -189,7 +191,8 @@ public class SenseOfRhythm extends JFrame {
             }
             @Override
             public void mousePressed(MouseEvent e){
-                System.exit(0);
+                rightButton.setVisible(true);
+                leftButton.setVisible(true);
             }
         });
 
@@ -216,7 +219,8 @@ public class SenseOfRhythm extends JFrame {
             }
             @Override
             public void mousePressed(MouseEvent e){
-                System.exit(0);
+                rightButton.setVisible(true);
+                leftButton.setVisible(true);
             }
         });
 
