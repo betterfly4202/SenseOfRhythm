@@ -199,6 +199,7 @@ public class SenseOfRhythm extends JFrame {
         add(leftButton);
     }
 
+    // add Button Refactoring 하기!!!
     public void addRightButton(){
         rightButton.setBounds(40, 350, 400, 100);
         rightButton.setBorderPainted(false);
